@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html class="h-full light" data-kt-theme="true" data-kt-theme-mode="light"
+    dir="ltr" lang="en"
+    data-kt-theme-swtich-initialized="true" data-kt-theme-switch-mode="light">
+
+    <head>
+        <title>
+            Expense Tracker
+        </title>
+        <meta charset="utf-8">
+        <!-- <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">     -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="Metronics/css/styles.bundle.css" rel="stylesheet">
+        <link href="Metronics/css/styles.css" rel="stylesheet">
+        <link href="Metronics/css/apexcharts.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <link
+            href="lib/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css"
+            rel="stylesheet">
+        <link href="lib/assets/plugins/custom/prismjs/prismjs.bundle.css"
+            rel="stylesheet">
+        <link href="lib/assets/plugins/custom/flatpicker/flatpickr.min.css"
+            id="flatpickr-light-css" rel="stylesheet">
+        <link href="lib/assets/plugins/custom/yearpicker/css/yearpicker.css"
+            rel="stylesheet">
+        <!-- <link href="lib/assets/plugins/custom/yearpicker/css/style.css"
+            rel="stylesheet"> -->
+        <link href="lib/assets/plugins/custom/flatpicker/dark.css"
+            id="flatpickr-dark-css" rel="stylesheet">
+        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet"
+            type="text/css" />
+        <link href="lib/assets/plugins/custom/monthSelect/style.css"
+            rel="stylesheet">
+        <link href="lib/assets/plugins/custom/datatables/datatables.bundle.css"
+            rel="stylesheet" type="text/css">
+        <!-- <link href="lib/assets/plugins/custom/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"> -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js@7.0.1/minified/introjs.min.css" /> -->
+        <link rel="stylesheet"
+            href="lib/assets/plugins/custom/shepherd/shepherd.css" />
+
+    </head>
+
+    <body
+        class="antialiased flex h-full text-base text-foreground bg-background [--header-height:60px] [--sidebar-width:270px] lg:overflow-hidden bg-muted">
+        <div class="flex grow" id="mainContent">
+            <header
+                class="flex lg:hidden items-center fixed z-10 top-0 start-0 end-0 shrink-0 bg-muted h-(--header-height)"
+                id="header">
+                <div
+                    class="kt-container-fixed flex items-center justify-between flex-wrap gap-3">
+                    <a href="/metronic/tailwind/demo6/">
+                        <img class="dark:hidden min-h-[30px]" src />
+                        <img class="hidden dark:block min-h-[30px]" src />
+                    </a>
+                    <button class="kt-btn kt-btn-icon kt-btn-ghost -me-2"
+                        data-kt-drawer-toggle="#sidebar">
+                        <!-- <i class="ki-filled ki-menu"></i> -->
+                        <svg style="width: 20px; height: 20px;"
+                            xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16"
+                            fill="#fafafa" class="bi bi-justify bold"
+                            viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <div
+                class="fixed z-20 hidden lg:flex flex-col shrink-0 w-(--sidebar-width) bg-muted [--kt-drawer-enable:true] lg:[--kt-drawer-enable:false]"
+                data-kt-drawer="true"
+                data-kt-drawer-class="kt-drawer kt-drawer-start flex top-0 bottom-0"
+                id="sidebar"
+                data-kt-drawer-initialized="true">
+                <div id="sidebar_header">
+                    <div class="flex items-center gap-2.5 px-3.5 h-[70px]">
+                        <a href>
+                            <img class="dark:hidden h-[42px]" src />
+                            <img class="hidden dark:inline-block h-[42px]"
+                                src />
+                        </a>
+                        <div class="kt-menu kt-menu-default grow"
+                            data-kt-menu="true">
+                            <div class="kt-menu-item grow kt-menu-item-dropdown"
+                                data-kt-menu-item-offset="0px,0px"
+                                data-kt-menu-item-placement="bottom-start"
+                                data-kt-menu-item-toggle="dropdown"
+                                data-kt-menu-item-trigger="hover">
+                                <div
+                                    class="kt-menu-label cursor-pointer text-mono font-medium grow justify-between">
+                                    <span
+                                        class="text-base font-medium text-mono grow justify-start">
+                                        MetronicCloud
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="flex items-stretch grow shrink-0 justify-center my-5"
+                    id="sidebar_menu">
+                    <div class="kt-scrollable-y-auto grow"
+                        data-kt-scrollable="true"
+                        data-kt-scrollable-dependencies="#sidebar_header, #sidebar_footer"
+                        data-kt-scrollable-height="auto"
+                        data-kt-scrollable-offset="0px"
+                        data-kt-scrollable-wrappers="#sidebar_menu"
+                        data-kt-scrollable-initialized="true"
+                        style="height: 124px;">
+                        <!-- Primary Menu -->
+                        <div class="kt-menu flex flex-col w-full gap-1.5 px-3.5"
+                            data-kt-menu="true"
+                            data-kt-menu-accordion-expand-all="false"
+                            id="sidebar_primary_menu">
+                            <div class="kt-menu-item active">
+                                <a
+                                    class="kt-menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent kt-menu-item-active:border-border kt-menu-item-active:bg-background kt-menu-link-hover:bg-background kt-menu-link-hover:border-border"
+                                    href="#overview">
+                                    <span><svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16" height="16"
+                                            fill="currentColor"
+                                            class="bi bi-bar-chart-fill"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
+                                        </svg></span>
+                                    <span
+                                        class="kt-menu-title text-sm text-foreground font-medium kt-menu-item-here:text-mono kt-menu-item-show:text-mono kt-menu-link-hover:text-mono">
+                                        Overview
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="kt-menu-item">
+                                <a
+                                    class="kt-menu-link gap-2.5 py-2 px-2.5 rounded-md border border-transparent kt-menu-item-active:border-border kt-menu-item-active:bg-background kt-menu-link-hover:bg-background kt-menu-link-hover:border-border"
+                                    href="#account">
+                                    <span
+                                        class="kt-menu-icon items-start text-lg text-secondary-foreground kt-menu-item-active:text-foreground kt-menu-item-here:text-foreground kt-menu-item-show:text-foreground kt-menu-link-hover:text-foreground dark:menu-item-active:text-mono dark:menu-item-here:text-mono dark:menu-item-show:text-mono dark:menu-link-hover:text-mono">
+                                        <i class="ki-filled ki-home-3">
+                                        </i>
+                                    </span>
+                                    <span
+                                        class="kt-menu-title text-sm text-foreground font-medium kt-menu-item-here:text-mono kt-menu-item-show:text-mono kt-menu-link-hover:text-mono">
+                                        Account
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div
+                    class="flex flex-center justify-between shrink-0 ps-4 pe-3.5 mb-3.5"
+                    id="sidebar_footer">
+                    <div data-kt-dropdown="true"
+                        data-kt-dropdown-offset="10px, 10px"
+                        data-kt-dropdown-offset-rtl="-20px, 10px"
+                        data-kt-dropdown-placement="bottom-start"
+                        data-kt-dropdown-placement-rtl="bottom-end"
+                        data-kt-dropdown-trigger="click"
+                        data-kt-dropdown-initialized="true">
+                        <div class="cursor-pointer shrink-0"
+                            data-kt-dropdown-toggle="true">
+                            <img alt
+                                class="size-12 rounded-full border-2 border-mono/25 shrink-0"
+                                src="lib/assets/Images/Male_Char1.png" />
+                        </div>
+                        <div class="kt-dropdown-menu w-[250px]"
+                            data-kt-dropdown-menu="true">
+                            <div
+                                class="flex items-center justify-between px-2.5 py-1.5 gap-1.5">
+                                <div class="flex items-center gap-2">
+                                    <img alt
+                                        class="size-9 shrink-0 rounded-full border-2 border-green-500"
+                                        src />
+                                    <div class="flex flex-col gap-1.5">
+                                        <span
+                                            class="text-sm text-foreground font-semibold leading-none">
+                                            Cody Fisher
+                                        </span>
+                                        <a
+                                            class="text-xs text-secondary-foreground hover:text-primary font-medium leading-none"
+                                            href="/metronic/tailwind/demo6/account/home/get-started">
+                                            c.fisher@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+                                <span
+                                    class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline">
+                                    Pro
+                                </span>
+                            </div>
+                            <ul class="kt-dropdown-menu-sub">
+                                <li>
+                                    <div class="kt-dropdown-menu-separator">
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="kt-dropdown-menu-link"
+                                        href="/metronic/tailwind/demo6/public-profile/profiles/default">
+                                        <i class="ki-filled ki-badge">
+                                        </i>
+                                        Public Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="kt-dropdown-menu-link"
+                                        href="/metronic/tailwind/demo6/account/home/user-profile">
+                                        <i class="ki-filled ki-profile-circle">
+                                        </i>
+                                        My Profile
+                                    </a>
+                                </li>
+                                <li data-kt-dropdown="true"
+                                    data-kt-dropdown-placement="right-start"
+                                    data-kt-dropdown-trigger="hover"
+                                    data-kt-dropdown-initialized="true">
+                                    <button class="kt-dropdown-menu-toggle"
+                                        data-kt-dropdown-toggle="true">
+                                        <i class="ki-filled ki-setting-2">
+                                        </i>
+                                        My Account
+                                        <span
+                                            class="kt-dropdown-menu-indicator">
+                                            <i
+                                                class="ki-filled ki-right text-xs">
+                                            </i>
+                                        </span>
+                                    </button>
+                                    <div class="kt-dropdown-menu w-[220px]"
+                                        data-kt-dropdown-menu="true">
+                                        <ul class="kt-dropdown-menu-sub">
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="/metronic/tailwind/demo6/account/home/get-started">
+                                                    <i
+                                                        class="ki-filled ki-coffee">
+                                                    </i>
+                                                    Get Started
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="/metronic/tailwind/demo6/account/home/user-profile">
+                                                    <i
+                                                        class="ki-filled ki-some-files">
+                                                    </i>
+                                                    My Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="#">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <i
+                                                            class="ki-filled ki-icon">
+                                                        </i>
+                                                        Billing
+                                                    </span>
+                                                    <span
+                                                        class="ms-auto inline-flex items-center"
+                                                        data-kt-tooltip="true"
+                                                        data-kt-tooltip-placement="top"
+                                                        data-kt-tooltip-initialized="true">
+                                                        <i
+                                                            class="ki-filled ki-information-2 text-base text-muted-foreground">
+                                                        </i>
+                                                        <span class="kt-tooltip"
+                                                            data-kt-tooltip-content="true">
+                                                            Payment and
+                                                            subscription info
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="/metronic/tailwind/demo6/account/security/overview">
+                                                    <i
+                                                        class="ki-filled ki-medal-star">
+                                                    </i>
+                                                    Security
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="/metronic/tailwind/demo6/account/members/teams">
+                                                    <i
+                                                        class="ki-filled ki-setting">
+                                                    </i>
+                                                    Members &amp; Roles
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="/metronic/tailwind/demo6/account/integrations">
+                                                    <i
+                                                        class="ki-filled ki-switch">
+                                                    </i>
+                                                    Integrations
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div
+                                                    class="kt-dropdown-menu-separator">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="/metronic/tailwind/demo6/account/security/overview">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <i
+                                                            class="ki-filled ki-shield-tick">
+                                                        </i>
+                                                        Notifications
+                                                    </span>
+                                                    <input checked
+                                                        class="ms-auto kt-switch"
+                                                        name="check"
+                                                        type="checkbox"
+                                                        value="1">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a class="kt-dropdown-menu-link"
+                                        href="https://devs.keenthemes.com">
+                                        <i
+                                            class="ki-filled ki-message-programming">
+                                        </i>
+                                        Dev Forum
+                                    </a>
+                                </li>
+                                <li data-kt-dropdown="true"
+                                    data-kt-dropdown-placement="right-start"
+                                    data-kt-dropdown-trigger="hover"
+                                    data-kt-dropdown-initialized="true">
+                                    <button class="kt-dropdown-menu-toggle py-1"
+                                        data-kt-dropdown-toggle="true">
+                                        <span class="flex items-center gap-2">
+                                            <i class="ki-filled ki-icon">
+                                            </i>
+                                            Language
+                                        </span>
+                                        <span
+                                            class="ms-auto kt-badge kt-badge-stroke shrink-0">
+                                            English
+                                            <img alt
+                                                class="inline-block size-3.5 rounded-full"
+                                                src />
+                                        </span>
+                                    </button>
+                                    <div class="kt-dropdown-menu w-[180px]"
+                                        data-kt-dropdown-menu="true">
+                                        <ul class="kt-dropdown-menu-sub">
+                                            <li class="active">
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="?dir=ltr">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <img alt
+                                                            class="inline-block size-4 rounded-full"
+                                                            src>
+                                                        <span
+                                                            class="kt-menu-title">
+                                                            English
+                                                        </span>
+                                                    </span>
+                                                    <i
+                                                        class="ki-solid ki-check-circle ms-auto text-green-500 text-base">
+                                                    </i>
+                                                </a>
+                                            </li>
+                                            <li class>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="?dir=rtl">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <img alt
+                                                            class="inline-block size-4 rounded-full"
+                                                            src />
+                                                        <span
+                                                            class="kt-menu-title">
+                                                            Arabic(Saudi)
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="?dir=ltr">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <img alt
+                                                            class="inline-block size-4 rounded-full"
+                                                            src />
+                                                        <span
+                                                            class="kt-menu-title">
+                                                            Spanish
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="?dir=ltr">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <img alt
+                                                            class="inline-block size-4 rounded-full"
+                                                            src />
+                                                        <span
+                                                            class="kt-menu-title">
+                                                            German
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class>
+                                                <a class="kt-dropdown-menu-link"
+                                                    href="?dir=ltr">
+                                                    <span
+                                                        class="flex items-center gap-2">
+                                                        <img alt
+                                                            class="inline-block size-4 rounded-full"
+                                                            src />
+                                                        <span
+                                                            class="kt-menu-title">
+                                                            Japanese
+                                                        </span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="kt-dropdown-menu-separator">
+                                    </div>
+                                </li>
+                            </ul>
+                            <div
+                                class="px-2.5 pt-1.5 mb-2.5 flex flex-col gap-3.5">
+                                <div
+                                    class="flex items-center gap-2 justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <i
+                                            class="ki-filled ki-moon text-base text-muted-foreground">
+                                        </i>
+                                        <span class="font-medium text-2sm">
+                                            Dark Mode
+                                        </span>
+                                    </span>
+                                    <input class="kt-switch"
+                                        data-kt-theme-switch-state="dark"
+                                        data-kt-theme-switch-toggle="true"
+                                        name="check" type="checkbox" value="1">
+                                </div>
+                                <a
+                                    class="kt-btn kt-btn-outline justify-center w-full"
+                                    href="/metronic/tailwind/demo6/authentication/classic/sign-in">
+                                    Log out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <button
+                            class="kt-btn kt-btn-ghost kt-btn-icon size-8 hover:bg-background hover:[&amp;_i]:text-primary"
+                            data-kt-drawer-toggle="#notifications_drawer">
+                            <i class="ki-filled ki-notification-status text-lg">    
+                            </i>
+                        </button>
+                        <a
+                            class="kt-btn kt-btn-ghost kt-btn-icon size-8 hover:bg-background hover:[&amp;_i]:text-primary"
+                            href="/metronic/tailwind/demo6/authentication/classic/sign-in">
+                            <i class="ki-filled ki-exit-right">
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar end -->
+            <div
+                class="flex flex-col lg:flex-row grow pt-(--header-height) lg:pt-0">
+                <div
+                    class="flex flex-col grow items-stretch rounded-xl bg-background border border-input lg:ms-(--sidebar-width) mt-0 lg:mt-[15px] m-[15px]">
+                    <div
+                        class="flex flex-col grow kt-scrollable-y-auto [--kt-scrollbar-width:auto] pt-5"
+                        id="scrollable_content">
+                        <main class="grow">
+                            <div id="overview" class="content-section">
+                                <div class="pb-5">
+                                    <div
+                                        class="kt-container-fixed flex items-center justify-between flex-wrap gap-3">
+                                        <div
+                                            class="flex items-center flex-wrap gap-1 lg:gap-5">
+                                            <h1
+                                                class="font-medium text-lg text-mono">
+                                                Overview
+                                            </h1>
+                                        </div>
+                                        <div
+                                            class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
+                                            <button class="kt-btn"
+                                                data-kt-modal-toggle="#modal"
+                                                id="transaction-modal"
+                                                data-intro="Click here to add a new transaction."
+                                                data-step="1"><svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    style="height: 20px;width:20px"
+                                                    width="16" height="16"
+                                                    fill="currentColor"
+                                                    class="bi bi-plus-circle-fill"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                                                </svg>Transaction</button>
+                                            <button class="kt-btn"
+                                                data-kt-modal-toggle="#quickGuideModal">modal</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kt-container-fixed">
+                                    <div class="grid gap-5 lg:gap-7.5">
+                                        <div
+                                            class="grid xl:grid-cols-2 gap-3 lg:gap-4 items-stretch">
+                                            <div class="lg:col-span-1"
+                                                id="incomeExpensesDiv">
+                                                <div class="kt-card">
+                                                    <div class="kt-card-header">
+                                                        <h3
+                                                            class="kt-card-title">
+                                                            Income & Expenses
+                                                        </h3>
+                                                    </div>
+                                                    <div
+                                                        class="kt-card-content flex flex-col place-content-center gap-5">
+                                                        <div
+                                                            class="chart-wrapper">
+                                                            <div
+                                                                id="kt_apexcharts_2"
+                                                                class="chart-area"></div>
+                                                            <div
+                                                                class="chart-message "
+                                                                id="chartMessage">Waiting
+                                                                for your first
+                                                                transaction...</div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lg:col-span-1"
+                                                id="totalBalanceDiv">
+                                                <div class="kt-card">
+                                                    <div class="kt-card-header">
+                                                        <h3
+                                                            class="kt-card-title">
+                                                            Total Balance
+                                                        </h3>
+                                                    </div>
+                                                    <div
+                                                        class="kt-card-content flex flex-col place-content-center gap-5">
+                                                        <div
+                                                            class="chart-wrapper">
+                                                            <div
+                                                                id="kt_apexcharts_3"
+                                                                style="height: 300px;"></div>
+                                                            <div
+                                                                class="chart-message "
+                                                                id="balanceChartMessage">Waiting
+                                                                for your first
+                                                                transaction...</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid gap-5 lg:gap-7.5 lg:mt-5">
+                                        <div
+                                            class="grid grid-cols-1 xl:grid-cols-3 gap-3 lg:gap-4 items-stretch">
+                                            <div
+                                                class="col-span-1 lg:col-span-2"
+                                                id="recentTransactionDiv">
+                                                <div class="grid">
+                                                    <div
+                                                        class="kt-card kt-card-grid h-full min-w-full">
+                                                        <div
+                                                            class="kt-card-header">
+                                                            <h3
+                                                                class="kt-card-title">
+                                                                Latest
+                                                                Transactions
+                                                            </h3>
+                                                            <input type="text"
+                                                                class="kt-input flatpickr-input"
+                                                                name="month2"
+                                                                id="monthPicker2"
+                                                                placeholder="MM-YYYY"
+                                                                style="max-width: 100px;">
+                                                        </div>
+                                                        <div
+                                                            class="kt-card-table">
+                                                            <div
+                                                                class="table-wrapper">
+                                                                <div id="table"
+                                                                    class="table-content table-scroll-wrapper">
+                                                                    <table
+                                                                        id="kt_datatable_dom_positioning"
+                                                                        class="table table-striped table-row-bordered gy-5 gs-7 rounded"
+                                                                        style="width: 100%;">
+                                                                        <thead>
+                                                                            <tr
+                                                                                class="fw-bold fs-6 text-gray-800 px-7">
+                                                                                <th>Mode</th>
+                                                                                <th>Type</th>
+                                                                                <th>Category</th>
+                                                                                <th>Date</th>
+                                                                                <th>Amount</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div
+                                                                    class="chart-message"
+                                                                    id="tableMessage">
+                                                                    Waiting for
+                                                                    your first
+                                                                    transaction...
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="col-span-1 lg:col-span-1"
+                                                id="spendingDiv">
+                                                <div
+                                                    class="kt-card h-full min-w-full">
+                                                    <div class="kt-card-header"
+                                                        style="display: flex; align-items: center; justify-content: space-between;position: relative;">
+                                                        <h3
+                                                            class="kt-card-title"
+                                                            style="margin: 0;">
+                                                            Spending Categories
+                                                        </h3>
+                                                        <input type="text"
+                                                            class="kt-input"
+                                                            name="month"
+                                                            id="monthPicker"
+                                                            placeholder="MM-YYYY"
+                                                            style="max-width: 100px;" />
+                                                    </div>
+                                                    <div
+                                                        class="kt-card-content flex flex-col gap-4 p-3 lg:p-3 lg:pt-4 justify-center min-h-[400px]">
+                                                        <div
+                                                            class="chart-wrapper">
+                                                            <div id="chartdiv"
+                                                                style="width: 100%; height: 300px;"></div>
+                                                            <div
+                                                                class="chart-message "
+                                                                id="categoryChartMessage">Waiting
+                                                                for your first
+                                                                transaction...</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <footer class="footer">
+                                        <div class="kt-container-fixed">
+                                            <div
+                                                class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 py-5">
+                                                <div
+                                                    class="flex order-2 md:order-1 gap-2 font-normal text-sm">
+                                                    <span
+                                                        class="text-muted-foreground">
+                                                        2025©
+                                                    </span>
+                                                    <a
+                                                        class="text-secondary-foreground hover:text-primary"
+                                                        href="https://keenthemes.com">
+                                                        Keenthemes Inc.
+                                                    </a>
+                                                </div>
+                                                <nav
+                                                    class="flex order-1 md:order-2 gap-4 font-normal text-sm text-secondary-foreground">
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://keenthemes.com/metronic/tailwind/docs">
+                                                        Docs
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://1.envato.market/Vm7VRE">
+                                                        Purchase
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://keenthemes.com/metronic/tailwind/docs/getting-started/license">
+                                                        FAQ
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://devs.keenthemes.com">
+                                                        Support
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://keenthemes.com/metronic/tailwind/docs/getting-started/license">
+                                                        License
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </div>
+                            <!-- <div id="account" class="content-section">
+                                <div class="pb-5">
+                                    <div
+                                        class="kt-container-fixed flex items-center justify-between flex-wrap gap-3">
+                                        <div
+                                            class="flex items-center flex-wrap gap-1 lg:gap-5">
+                                            <h1
+                                                class="font-medium text-lg text-mono">
+                                                Overview
+                                            </h1>
+                                        </div>
+                                        <div
+                                            class="flex items-center flex-wrap gap-1.5 lg:gap-3.5">
+                                            <a class="kt-btn kt-btn-outline"
+                                                href="/metronic/tailwind/demo6/account/home/get-started">
+                                                <i
+                                                    class="ki-filled ki-exit-down">
+                                                </i>
+                                                Export
+                                            </a>
+                                            <div class="kt-menu kt-menu-default"
+                                                data-kt-menu="true">
+                                                <div
+                                                    class="kt-menu-item kt-menu-item-dropdown"
+                                                    data-kt-menu-item-offset="0, 0"
+                                                    data-kt-menu-item-placement="bottom-end"
+                                                    data-kt-menu-item-toggle="dropdown"
+                                                    data-kt-menu-item-trigger="hover">
+                                                    <button
+                                                        class="kt-menu-toggle kt-btn kt-btn-outline flex-nowrap">
+                                                        <span
+                                                            class="flex items-center me-1">
+                                                            <i
+                                                                class="ki-filled ki-calendar text-base!">
+                                                            </i>
+                                                        </span>
+                                                        <span
+                                                            class="hidden md:inline text-nowrap">
+                                                            September, 2024
+                                                        </span>
+                                                        <span
+                                                            class="inline md:hidden text-nowrap">
+                                                            Sep, 2024
+                                                        </span>
+                                                        <span
+                                                            class="flex items-center lg:ms-4">
+                                                            <i
+                                                                class="ki-filled ki-down text-xs!">
+                                                            </i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kt-container-fixed">
+                                    <div class="grid gap-5 lg:gap-7.5">
+                                        <div
+                                            class="grid lg:grid-cols-2 gap-5 lg:gap-7.5 items-stretch">
+                                            <div class="lg:col-span-1">
+                                                <div class="kt-card">
+                                                    <div class="kt-card-header">
+                                                        <h3
+                                                            class="kt-card-title">
+                                                            Income & Expenses
+                                                        </h3>
+                                                    </div>
+                                                    <div
+                                                        class="kt-card-content flex flex-col place-content-center gap-5">
+                                                        <div
+                                                            class="chart-wrapper">
+                                                            <div
+                                                                id="kt_apexcharts_2"
+                                                                class="chart-area"
+                                                                ></div>
+                                                            <div
+                                                                class="chart-message "
+                                                                id="chartMessage">Waiting
+                                                                for your first
+                                                                transaction...</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="lg:col-span-1">
+                                                <div class="kt-card">
+                                                    <div class="kt-card-header">
+                                                        <h3
+                                                            class="kt-card-title">
+                                                            Total Balance
+                                                        </h3>
+                                                    </div>
+                                                    <div
+                                                        class="kt-card-content flex flex-col place-content-center gap-5">
+                                                        <div
+                                                            id="kt_apexcharts_3"
+                                                            style="height: 300px;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <footer class="footer">
+                                        <div class="kt-container-fixed">
+                                            <div
+                                                class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 py-5">
+                                                <div
+                                                    class="flex order-2 md:order-1 gap-2 font-normal text-sm">
+                                                    <span
+                                                        class="text-muted-foreground">
+                                                        2025©
+                                                    </span>
+                                                    <a
+                                                        class="text-secondary-foreground hover:text-primary"
+                                                        href="https://keenthemes.com">
+                                                        Keenthemes Inc.
+                                                    </a>
+                                                </div>
+                                                <nav
+                                                    class="flex order-1 md:order-2 gap-4 font-normal text-sm text-secondary-foreground">
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://keenthemes.com/metronic/tailwind/docs">
+                                                        Docs
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://1.envato.market/Vm7VRE">
+                                                        Purchase
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://keenthemes.com/metronic/tailwind/docs/getting-started/license">
+                                                        FAQ
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://devs.keenthemes.com">
+                                                        Support
+                                                    </a>
+                                                    <a
+                                                        class="hover:text-primary"
+                                                        href="https://keenthemes.com/metronic/tailwind/docs/getting-started/license">
+                                                        License
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </div> -->
+                        </main>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-modal" data-kt-modal="true" id="modal">
+                <div class="kt-modal-content max-w-[400px] top-[10%]">
+                    <div class="kt-modal-header">
+                        <h3 class="kt-modal-title">Create Transaction</h3>
+                        <button type="button" class="kt-modal-close"
+                            aria-label="Close modal"
+                            data-kt-modal-dismiss="#modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-x" aria-hidden="true">
+                                <path d="M18 6 6 18"></path>
+                                <path d="m6 6 12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="kt-modal-body">
+                        <form id="addData" autocomplete="off">
+                            <div class="kt-input-group fv-row mt-2">
+                                <span
+                                    class="kt-input-addon kt-input-addon-icon">
+                                    <select id="currency" class="kt-select"
+                                        data-kt-select="true"
+                                        data-kt-select-placeholder="Select an option..."
+                                        data-kt-select-config='{
+                                          "displayTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}}&lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;",
+                                          "optionTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}} &lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-3.5 ms-auto hidden text-primary kt-select-option-selected:block\"&gt;&lt;path d=\"M20 6 9 17l-5-5\"/&gt;&lt;/svg&gt;&lt;/div&gt;"
+                                      }'>
+                                        <option selected value="software"
+                                            data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;path d=\"M10 10.5 8 13l2 2.5\/&gt;&lt;path d=\"m14 10.5 2 2.5-2 2.5\/&gt;&lt;path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z\"/&gt;&lt;/svg&gt;"}'>
+                                            INR
+                                        </option>
+                                        <option value="network"
+                                            data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;rect x=\"16\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\"/&gt;&lt;rect x=\"2\" y=\"16\" width=\"6\" height=\"6\" rx=\"1\"/&gt;&lt;rect x=\"9\" y=\"2\" width=\"6\" height=\"6\" rx=\"1\"/&gt;&lt;path d=\"M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3\/&gt;&lt;path d=\"M12 12V8\/&gt;&lt;/svg&gt;"}'>
+                                            EURO
+                                        </option>
+                                        <option value="storage"
+                                            data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\"/&gt;&lt;path d=\"M3 5V19A9 3 0 0 0 21 19V5\/&gt;&lt;path d=\"M3 12A9 3 0 0 0 21 12\"/&gt;&lt;/svg&gt;"}'>
+                                            JPY
+                                        </option>
+                                        <option value="security"
+                                            data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;circle cx=\"12\" cy=\"16\" r=\"1\"/&gt;&lt;rect x=\"3\" y=\"10\" width=\"18\" height=\"12\" rx=\"2\"/&gt;&lt;path d=\"M7 10V7a5 5 0 0 1 10 0v3\"/&gt;&lt;/svg&gt;"}'>
+                                            YN
+                                        </option>
+                                    </select>
+                                </span>
+                                <input class="kt-input" type="text"
+                                    name="Amount" id="amount"
+                                    onkeypress="return isNumberKey(event)"
+                                    placeholder="Enter amount" />
+                            </div>
+                            <div id="amountError" class="error-msg"></div>
+                            <div class="kt-input fv-row mt-2">
+                                <input type="text" class="kt-input" name="Date"
+                                    id="date" placeholder="Select date" /><svg
+                                    style="width: 20px; height: 20px;"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16" fill="currentColor"
+                                    class="bi bi-calendar-date"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.445 11.688V6.354h-.633A13 13 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23" />
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                </svg>
+                            </div>
+                            <div id="dateError" class="error-msg"></div>
+                            <div class="fv-row mt-2">
+                                <select name="Source" id="source"
+                                    class="kt-select" data-kt-select="true"
+                                    data-kt-select-placeholder="Select an Source..."
+                                    data-kt-select-config='{
+                              "displayTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}}&lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;",
+                              "optionTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}} &lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-3.5 ms-auto hidden text-primary kt-select-option-selected:block\"&gt;&lt;path d=\"M20 6 9 17l-5-5\"/&gt;&lt;/svg&gt;&lt;/div&gt;"
+                          }'>
+                                    <option value>Select an
+                                        Source</option>
+                                    <option value="Expense"
+                                        data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;circle cx=\"19\" cy=\"6\" r=\"3\"/&gt;&lt;path d=\"M22 12v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9\/&gt;&lt;path d=\"M12 17v4\/&gt;&lt;path d=\"M8 21h8\"/&gt;&lt;/svg&gt;"}'>
+                                        Expense
+                                    </option>
+                                    <option value="Income"
+                                        data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;path d=\"M10 10.5 8 13l2 2.5\/&gt;&lt;path d=\"m14 10.5 2 2.5-2 2.5\/&gt;&lt;path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z\"/&gt;&lt;/svg&gt;"}'>
+                                        Income
+                                    </option>
+                                </select>
+                            </div>
+                            <div id="sourceError" class="error-msg"></div>
+                            <div class="fv-row mt-2">
+                                <select name="Category" id="category"
+                                    class="kt-select" data-kt-select="true"
+                                    data-kt-select-placeholder="Select an Category..."
+                                    data-kt-select-config='{
+                              "displayTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}}&lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;",
+                              "optionTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}} &lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-3.5 ms-auto hidden text-primary kt-select-option-selected:block\"&gt;&lt;path d=\"M20 6 9 17l-5-5\"/&gt;&lt;/svg&gt;&lt;/div&gt;"
+                                    }'>
+                                    <option value disabled>Select an
+                                        Category...</option>>
+
+                                </select>
+                            </div>
+                            <div id="categoryError" class="error-msg"></div>
+                            <div class="fv-row mt-2">
+                                <select name="Mode" id="mode" class="kt-select"
+                                    data-kt-select="true"
+                                    data-kt-select-placeholder="Select an Mode..."
+                                    data-kt-select-config='{
+                              "displayTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}}&lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;",
+                              "optionTemplate": "&lt;div class=\"flex items-center gap-2\"&gt;{{icon}} &lt;span class=\"text-foreground\"&gt;{{text}}&lt;/span&gt;&lt;/div&gt;&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-3.5 ms-auto hidden text-primary kt-select-option-selected:block\"&gt;&lt;path d=\"M20 6 9 17l-5-5\"/&gt;&lt;/svg&gt;&lt;/div&gt;"
+                          }'>
+                                    <option value>Select an
+                                        Mode</option>
+                                    <option value="Card"
+                                        data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;circle cx=\"19\" cy=\"6\" r=\"3\"/&gt;&lt;path d=\"M22 12v3a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9\/&gt;&lt;path d=\"M12 17v4\/&gt;&lt;path d=\"M8 21h8\"/&gt;&lt;/svg&gt;"}'>
+                                        Card
+                                    </option>
+                                    <option value="Cash"
+                                        data-kt-select-option='{"icon": "&lt;svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"size-4 text-muted-foreground\"&gt;&lt;path d=\"M10 10.5 8 13l2 2.5\/&gt;&lt;path d=\"m14 10.5 2 2.5-2 2.5\/&gt;&lt;path d=\"M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z\"/&gt;&lt;/svg&gt;"}'>
+                                        Cash
+                                    </option>
+                                </select>
+                            </div>
+                            <div id="modeError" class="error-msg"></div>
+                            <div
+                                class="rounded-lg bg-muted w-full grow mt-5 h-[175px]"></div>
+                        </form>
+                    </div>
+                    <div class="kt-modal-footer justify-end">
+                        <div class="flex gap-4">
+                            <button class="kt-btn kt-btn-secondary"
+                                data-kt-modal-dismiss="#modal">
+                                Cancel</button><button class="kt-btn"
+                                type="submit" id="btnSubmit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-modal" data-kt-modal="true" id="customAlertOverlay">
+                <div
+                    class="kt-modal-content max-w-[400px] top-[10%] animate-modal-in">
+                    <!-- <div class="kt-modal-header">
+                        <h3 class="kt-modal-title">Error</h3>
+                    </div> -->
+                    <div class="kt-modal-body justify-center">
+                        <div class="flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                style="height: 80px;width:80px" width="15"
+                                height="15"
+                                fill="#2b7fff" class="bi bi-info-circle "
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="justify-center"
+                                style="text-align: center;"
+                                id="customAlertText"></div>
+                        </div>
+                    </div>
+                    <div class="kt-modal-footer justify-center">
+                        <div class="flex gap-4">
+                            <button class="kt-btn kt-btn-info"
+                                data-kt-modal-dismiss="#customAlertOverlay">
+                                Ok, got it !</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-modal" data-kt-modal="true" id="quickGuideModal">
+                <div
+                    class="kt-modal-content max-w-[400px] top-[10%] animate-modal-in">
+                    <!-- <div class="kt-modal-header">
+                        <h3 class="kt-modal-title">Error</h3>
+                    </div> -->
+                    <div class="kt-modal-body justify-center">
+                        <div class="flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                style="height: 80px;width:80px" width="15"
+                                height="15"
+                                fill="#2b7fff" class="bi bi-info-circle "
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="justify-center"
+                                style="text-align: center;"
+                                id="customAlertText">
+                                Welcome to Expense Dashboard!
+                                <p>This is a quick guide to help you get
+                                    started</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-modal-footer justify-center">
+                        <div class="flex gap-4">
+                            <button class="kt-btn kt-btn-info"
+                                data-kt-modal-dismiss="#quickGuideModal">
+                                Ok, got it !</button>
+                            <button class="kt-btn kt-btn-info" id="startBtn"
+                                data-kt-modal-dismiss="#quickGuideModal">
+                                Start</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+        <script
+            src="lib/assets/plugins/custom/yearpicker/js/jquery.min.js"></script>
+        <script src="Metronics/js/core.bundle.js"></script>
+        <script src="Metronics/js/ktui.min.js"></script>
+        <script src="Metronics/js/apexcharts.min.js"></script>
+        <script src="lib/assets/js/scripts.bundle.js"></script>
+        <script src="lib/assets/js/widgets.bundle.js"></script>
+        <script src="lib/assets/plugins/custom/amcharts/Animated.js"></script>
+        <script src="lib/assets/plugins/custom/amcharts/exporting.js"></script>
+        <script src="lib/assets/plugins/custom/amcharts/index.js"></script>
+        <!-- <script src="lib/assets/plugins/custom/amcharts/rangeSelector.js"></script> -->
+        <script src="lib/assets/plugins/custom/amcharts/xy.js"></script>
+        <script
+            src="lib/assets/plugins/custom/yearpicker/js/yearpicker.js"></script>
+        <script src="lib/assets/plugins/custom/amcharts/percent.js"></script>
+        <script src="lib/assets/plugins/custom/amcharts/Dark.js"></script>
+        <script
+            src="lib/assets/plugins/custom/flatpicker/flatpickr.js"></script>
+        <script src="assets/plugins/global/plugins.bundle.js"></script>
+        <script src="lib/assets/plugins/custom/monthSelect/index.js"></script>
+        <script
+            src="lib/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+        <!-- <script src="Bootstrap/js/bootstrap.bundle.min.js"></script> -->
+        <script
+            src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+        <script
+            src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/intro.js@7.0.1/minified/intro.min.js"></script> -->
+        <script
+            src="lib/assets/plugins/custom/shepherd/shepherd.min.js"></script>
+
+        <!-- JSZip (for Excel export) -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+        <script src="app.js"></script>
+
+        <script> const defaultThemeMode = 'light'; // light|dark|system
+    let themeMode;
+
+    if (document.documentElement) {
+        if (localStorage.getItem('kt-theme')) {
+            themeMode = localStorage.getItem('kt-theme');
+        } else if (
+            document.documentElement.hasAttribute('data-kt-theme-mode')
+        ) {
+            themeMode =
+                document.documentElement.getAttribute('data-kt-theme-mode');
+        } else {
+            themeMode = defaultThemeMode;
+        }
+
+        if (themeMode === 'system') {
+            themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+        }
+
+        document.documentElement.classList.add(themeMode);
+    }
+</script>
+
+    </html>

@@ -1,0 +1,468 @@
+:root {
+  --axis-label-color: #555555;
+  /* for light mode */
+}
+
+body.data-kt-theme-mode {
+  --axis-label-color: red;
+  /* for dark mode */
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+/* flatpickr */
+.flatpickr-day.today {
+  background: #3e97ff !important;
+  color: #ffffff !important;
+  /* border-color: transparent; */
+  border: none;
+}
+
+.flatpickr-calendar {
+  width: 328px !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+  padding-bottom: 10px !important;
+  transform: translateY(10px) !important;
+}
+
+.flatpickr-calendar::before,
+.flatpickr-calendar::after {
+  display: none !important;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover svg,
+.flatpickr-months .flatpickr-next-month:hover svg {
+  transform: scale(1.3);
+  transform-origin: center;
+  fill: #3e97ff !important;
+}
+
+.flatpickr-months .flatpickr-prev-month svg,
+.flatpickr-months .flatpickr-next-month svg {
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
+.flatpickr-current-month .numInputWrapper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.flatpickr-current-month .numInputWrapper:hover,
+.flatpickr-current-month .numInputWrapper:focus-within {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.flatpickr-current-month .arrowUp,
+.flatpickr-current-month .arrowDown {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.cur-year {
+  flex-shrink: 0;
+  /* padding-right: 10px !important; */
+}
+
+.arrowUp,
+.arrowDown {
+  display: inline-block !important;
+  cursor: pointer !important;
+  padding-left: 10px !important;
+  transform: scale(1);
+  transform-origin: center;
+}
+
+.flatpickr-monthDropdown-months {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  padding-right: 10px !important;
+  cursor: pointer !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.flatpickr-monthDropdown-months::-ms-expand {
+  display: none !important;
+}
+
+.kt-modal-body>div {
+  margin-bottom: 1rem;
+}
+
+.error-msg {
+  color: red;
+  font-size: smaller;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 300px;
+}
+
+.table-wrapper {
+  position: relative;
+  min-height: 400px;
+
+}
+
+.table-scroll-wrapper {
+  max-height: 410px;
+  overflow-y: auto;
+}
+
+.chart-area {
+  height: 100%;
+  z-index: 1;
+}
+
+.blurred {
+  filter: blur(4px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.chart-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  /* Light background */
+  color: #000;
+  /* Light theme safe */
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+  display: none;
+}
+
+.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+}
+
+/* Base table styles */
+/* Dark mode */
+html.dark {
+  background-color: #121217;
+  color: #e4e6ef;
+}
+
+html.dark .dataTables_wrapper {
+  background-color: #181824;
+  padding: 1rem;
+  border-radius: 0 0 12px 12px;
+}
+
+html.dark table.dataTable {
+  background-color: #181824;
+  color: #e4e6ef;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+html.dark table.dataTable thead th {
+  background-color: #2a2a3d;
+  color: #e4e6ef;
+  font-weight: 600;
+  padding: 12px 15px;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  box-shadow: inset 0 -1px 0 #44475a;
+}
+
+html.dark table.dataTable tbody tr {
+  background-color: #222233;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+  transition: background-color 0.3s ease;
+}
+
+html.dark table.dataTable tbody tr:nth-child(even) {
+  background-color: #1c1c2e;
+}
+
+html.dark table.dataTable tbody tr:hover {
+  background-color: #3699ff;
+  color: #fff;
+}
+
+html.dark table.dataTable tbody td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  border: none;
+}
+
+html.dark .dataTables_wrapper .dataTables_filter input,
+html.dark .dataTables_wrapper .dataTables_length select {
+  background-color: #2a2a3d;
+  border: 1px solid #44475a;
+  color: #e4e6ef;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+html.dark .dataTables_wrapper .dataTables_filter label,
+html.dark .dataTables_wrapper .dataTables_length label {
+  color: #a1a5c1;
+  font-weight: 500;
+}
+
+html.dark .dataTables_wrapper .dataTables_info {
+  color: #a1a5c1;
+  /* margin-top: 10px; */
+  font-size: 15px;
+}
+
+html.dark .dataTables_wrapper .dataTables_paginate .paginate_button {
+  background: #2e2e3f;
+  border: 1px solid #444a6d;
+  color: #a1a5c1;
+  padding: 6px 12px;
+  margin-left: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+html.dark .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+html.dark .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #3699ff;
+  border-color: #3699ff;
+  color: #fff !important;
+}
+
+/* Light mode styles when html DOES NOT have .dark */
+html:not(.dark) {
+  background-color: #fff;
+  /* page background */
+  color: #3a3a3a;
+  /* text color */
+}
+
+html:not(.dark) .dataTables_wrapper {
+  background-color: #fff;
+  padding: 1rem;
+  color: #3a3a3a;
+  border-radius: 0 0 12px 12px;
+}
+
+html:not(.dark) table.dataTable {
+  background-color: #fff;
+  color: #3a3a3a;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  /* spacing between rows */
+}
+
+html:not(.dark) table.dataTable thead th {
+  background-color: #f3f6f9;
+  color: #3a3a3a;
+  font-weight: 600;
+  padding: 12px 15px;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  box-shadow: inset 0 -1px 0 #e5e5e5;
+}
+
+html:not(.dark) table.dataTable tbody tr {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
+  transition: background-color 0.3s ease;
+}
+
+html:not(.dark) table.dataTable tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+html:not(.dark) table.dataTable tbody tr:hover {
+  background-color: #e1e6f9;
+  color: #2b2b2b;
+}
+
+html:not(.dark) table.dataTable tbody td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  border: none;
+}
+
+/* Controls: search input and length select */
+html:not(.dark) .dataTables_wrapper .dataTables_filter input,
+html:not(.dark) .dataTables_wrapper .dataTables_length select {
+  background-color: #fff;
+  border: 1px solid #d1d3e0;
+  color: #3a3a3a;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Controls labels */
+html:not(.dark) .dataTables_wrapper .dataTables_filter label,
+html:not(.dark) .dataTables_wrapper .dataTables_length label {
+  color: #6e6b7b;
+  font-weight: 500;
+}
+
+/* Info text */
+html:not(.dark) .dataTables_wrapper .dataTables_info {
+  color: #6e6b7b;
+  /* margin-top: 10px; */
+  font-size: 15px;
+}
+
+/* Pagination buttons */
+html:not(.dark) .dataTables_wrapper .dataTables_paginate .paginate_button {
+  background: #f5f5f5;
+  border: 1px solid #d1d5db;
+  color: #3a3a3a;
+  padding: 6px 12px;
+  margin-left: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+html:not(.dark) .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+html:not(.dark) .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #3699ff;
+  border-color: #3699ff;
+  color: #fff !important;
+}
+
+html,
+body,
+.dataTables_wrapper,
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select,
+table.dataTable,
+table.dataTable thead th,
+table.dataTable tbody td,
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.kt-select-dropdown,
+.kt-select-menu,
+.select-options-list {
+  max-height: 200px !important;
+  overflow-y: auto !important;
+}
+
+
+/* SweetAlert Style Modal */
+.custom-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.custom-alert {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+.custom-alert h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.custom-alert p {
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.custom-alert button {
+  padding: 10px 20px;
+  background-color: #3085d6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.custom-alert button:hover {
+  background-color: #256abf;
+}
+
+
+@keyframes modal-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+/* quick guide  */
+.blurred-background {
+  filter: blur(4px);
+  opacity: 0.5;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.unblurred {
+  filter: none !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  position: relative;
+  z-index: 10 !important;
+  isolation: isolate; /* Helps break out of filters if needed */
+}
