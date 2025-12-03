@@ -101,27 +101,25 @@ document.getElementById("signUpForm").addEventListener("submit", function (event
 
         //Node.js
         // try {
-        //     const response = await fetch('http://localhost:5000/signup', {
+        //     const response = await fetch('https://<your-railway-app>.up.railway.app/signup', {
         //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
+        //         headers: { 'Content-Type': 'application/json' },
         //         body: JSON.stringify({ email, username, password })
         //     });
 
         //     const data = await response.json();
 
-        //     if (response.status === 201) {
+        //     if (response.ok) {
         //         alert(data.message);
-        //         window.location.href = 'index.html';
+        //         window.location.href = 'signin.html'; // Redirect to login page
         //     } else {
-        //         alert(data.message);
+        //         alert(data.message); // Email or username exists
         //     }
-        // } catch (error) {
-        //     console.error('Error:', error);
-        //     alert('Something went wrong');
-        // }
 
+        // } catch (err) {
+        //     console.error(err);
+        //     alert("Server error, please try again later.");
+        // }        
         // Step 3: Connect to MongoDB Atlas
 
         // Go to MongoDB Atlas

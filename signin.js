@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     let userName = document.getElementById("userName").value;
     let passWord = document.getElementById("passWord").value;
@@ -46,12 +46,12 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     if (userName == "") {
         document.getElementById("userNameError").textContent = "Username is required";
         isValid = false;
-    } 
+    }
 
     if (passWord == "") {
         document.getElementById("passwordError").textContent = "Password is required";
         isValid = false;
-    } 
+    }
 
     if (isValid) {
         const User = userData.filter(user => user.UserName == userName && user.Password == passWord)
@@ -69,7 +69,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
         //Node.js
         // try {
-        //     const response = await fetch('http://localhost:5000/login', {
+        //     const response = await fetch('https://<your-railway-app>.up.railway.app/signin', {
         //         method: 'POST',
         //         headers: { 'Content-Type': 'application/json' },
         //         body: JSON.stringify({ username, password })
@@ -77,16 +77,16 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
         //     const data = await response.json();
 
-        //     if (response.status === 200) {
+        //     if (response.ok) {
         //         alert(data.message);
-        //         window.location.href = 'main.html';
+        //         window.location.href = 'main.html'; // Redirect to main page
         //     } else {
-        //         alert(data.message);
+        //         alert(data.message); // Username not found or wrong password
         //     }
 
-        // } catch (error) {
-        //     console.error('Error:', error);
-        //     alert('Something went wrong');
+        // } catch (err) {
+        //     console.error(err);
+        //     alert("Server error, please try again later.");
         // }
     }
 
